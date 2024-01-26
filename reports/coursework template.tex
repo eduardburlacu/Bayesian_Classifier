@@ -1,0 +1,291 @@
+%% LyX 2.2.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=2.5cm,rmargin=2.5cm}
+\usepackage{textcomp}
+\usepackage{amstext}
+\usepackage{graphicx}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\title{3F8: Inference\\
+ Short Lab Report}
+
+\author{Author's Name}
+\maketitle
+\begin{abstract}
+This is the abstract. 
+
+Try for 1-2 sentences on each of: motive (what it\textquoteright s
+about), method (what was
+
+done), key results and conclusions (the main outcomes).
+
+\textbullet{} Don\textquoteright t exceed 3 sentences on any one.
+
+\textbullet{} Write this last, when you know what it should say!
+\end{abstract}
+
+\section{Introduction}
+\begin{enumerate}
+\item What is the problem and why is it interesting?
+\item What novel follow-up will the rest of your report present?
+\end{enumerate}
+
+\section{Exercise a)\label{sec:Exercise-a}}
+
+In this exercise we have to consider the logistic classication model
+(aka logistic regression) and derive the gradients of the log-likelihood
+given a vector of binary labels $\mathbf{y}$ and a matrix of input
+features $\mathbf{X}$. The gradient of the log-likelihood can be
+writen as
+\[
+\frac{\partial\mathcal{L}(\beta)}{\partial\beta}=\text{(to be completed)}\,.
+\]
+
+
+\section{Exercise b)}
+
+In this exercise we are asked to write pseudocode to estimate the
+parameters $\beta$ using gradient ascent of the log-likelihood. Our
+code should be vectorised. The pseudocode to estimate the parameters
+$\beta$ is shown below:
+\begin{verbatim}
+Function estimate_parameters:
+
+   Input:  feature matrix X, labels y
+   Output: vector of coefficients b
+	
+   Code:
+
+      ...
+      (to be completed)
+      ...
+
+      return b
+\end{verbatim}
+The learning rate parameter $\eta$ is chosen...
+
+\section{Exercise c)}
+
+In this exercise we visualise the dataset in the two-dimensional input
+space displaying each datapoint's class label. The dataset is visualised
+in Figure \ref{fig:data_visualisation}. By analising Figure \ref{fig:data_visualisation}
+we conclude that a linear classifier...
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\paperwidth]{place_holder_figure}
+\par\end{centering}
+\caption{Visualisation of the data.\label{fig:data_visualisation} }
+\end{figure}
+
+
+\section{Exercise d)}
+
+In this exercise we split the data randomly into training and test
+sets with 800 and 200 data points, respectively. The pseudocode from
+exercise a) is transformed into python code as follows:
+\begin{verbatim}
+#
+# Python code to be included
+#
+\end{verbatim}
+We then train the classifier using this code. We fixed the learning
+rate parameter to be $\eta=...$ . The average log-likelihood on the
+training and test sets as the optimisation proceeds are shown in Figure
+\ref{fig:learning_curves}. By looking at these plots we conclude
+that ...
+
+Figure \ref{fig:learning_curves} displays the visualisation of the
+contours of the class predictive probabilities on top of the data.
+This figure shows that...
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\paperwidth]{place_holder_figure}\hspace{1cm}\includegraphics[width=0.3\paperwidth]{place_holder_figure}
+\par\end{centering}
+\caption{Learning curves showing the average log-likelihood on the training
+(left) and test (right) datasets.\label{fig:learning_curves} }
+\end{figure}
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.3\paperwidth]{place_holder_figure}
+\par\end{centering}
+\caption{Visualisation of the contours of the class predictive probabilities.\label{fig:data_visualisation-1} }
+\end{figure}
+
+
+\section{Exercise e)}
+
+The final average training and test log-likelihoods are shown in Table
+\ref{tab:average_ll}. These results indicate that... The 2x2 confusion
+matrices on the and test set is shown in Table \ref{tab:confusion_test}.
+By analising this table, we conclude that...
+
+\begin{table}
+\centering{}%
+\begin{minipage}[t]{0.49\columnwidth}%
+\begin{center}
+\begin{tabular}{c|c}
+\textbf{Avg. Train ll} & \textbf{Avg. Test ll}\tabularnewline
+\hline 
+- & -\tabularnewline
+\hline 
+\end{tabular} 
+\par\end{center}
+\caption{Average training and test log-likelihoods.\label{tab:average_ll}}
+%
+\end{minipage}%
+\begin{minipage}[t]{0.49\columnwidth}%
+\begin{center}
+\begin{tabular}{cc|c|c}
+ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\hat{y}$} & \tabularnewline
+ &  & 0 & 1\tabularnewline
+\cline{2-4} 
+$y$ & 0 & - & -\tabularnewline
+\cline{2-4} 
+ & 1 & - & -\tabularnewline
+\cline{2-4} 
+\end{tabular} 
+\par\end{center}
+\caption{Confusion matrix on the test set.\label{tab:confusion_test}}
+%
+\end{minipage}
+\end{table}
+
+
+\section{Exercise f)}
+
+We now expand the inputs through a set of Gaussian radial basis functions
+centred on the training datapoints. We consider widths $l=\{0.01,0.1,1\}$
+for the basis functions. We fix the learning rate parameter to be
+$\eta=\{...,...,...\}$ for each $l=\{0.01,0.1,1\}$, respectively.
+Figure \ref{fig:contours_l} displays the visualisation of the contours
+of the resulting class predictive probabilities on top of the data
+for each choice of $l=\{0.01,0.1,1\}$.
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.32\textwidth]{place_holder_figure}\hspace{0.15cm}\includegraphics[width=0.32\textwidth]{place_holder_figure}\hspace{0.15cm}\includegraphics[width=0.32\textwidth]{place_holder_figure}
+\par\end{centering}
+\caption{Visualisation of the contours of the class predictive probabilities
+for $l=0.01$ (left), $l=0.1$ (middle), $l=1$ (right).\label{fig:contours_l} }
+\end{figure}
+
+
+\section{Exercise g)}
+
+The final final training and test log-likelihoods per datapoint obtained
+for each setting of $l=\{0.01,0.1,1\}$ are shown in tables \ref{tab:avg_ll_l_001},
+\ref{tab:avg_ll_l_01} and \ref{tab:avg_ll_l_1}. These results indicate
+that... The 2 \texttimes{} 2 confusion matrices for the three models
+trained with $l=\{0.01,0.1,1\}$ are show in tables \ref{tab:conf_l_001},
+\ref{tab:conf_l_01} and \ref{tab:conf_l_1}. After analysing these
+matrices, we can say that... When we compare these results to those
+obtained using the original inputs we conclude that...
+
+\begin{table}
+\centering{}%
+\begin{minipage}[t]{0.3\textwidth}%
+\begin{center}
+\begin{tabular}{c|c}
+\textbf{Avg. Train ll} & \textbf{Avg. Test ll}\tabularnewline
+\hline 
+- & -\tabularnewline
+\hline 
+\end{tabular}\caption{Results for $l=0.01$\label{tab:avg_ll_l_001}}
+\par\end{center}%
+\end{minipage}\hspace{0.5cm}%
+\begin{minipage}[t]{0.3\textwidth}%
+\begin{center}
+\begin{tabular}{c|c}
+\textbf{Avg. Train ll} & \textbf{Avg. Test ll}\tabularnewline
+\hline 
+- & -\tabularnewline
+\hline 
+\end{tabular}\caption{Results for $l=0.1$\label{tab:avg_ll_l_01}}
+\par\end{center}%
+\end{minipage}\hspace{0.5cm}%
+\begin{minipage}[t]{0.3\textwidth}%
+\begin{center}
+\begin{tabular}{c|c}
+\textbf{Avg. Train ll} & \textbf{Avg. Test ll}\tabularnewline
+\hline 
+- & -\tabularnewline
+\hline 
+\end{tabular}\caption{Results for $l=1$\label{tab:avg_ll_l_1}}
+\par\end{center}%
+\end{minipage}
+\end{table}
+
+\begin{table}
+\centering{}%
+\begin{minipage}[t]{0.33\textwidth}%
+\begin{center}
+\begin{tabular}{cc|c|c}
+ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\hat{y}$} & \tabularnewline
+ &  & 0 & 1\tabularnewline
+\cline{2-4} 
+$y$ & 0 & - & -\tabularnewline
+\cline{2-4} 
+ & 1 & - & -\tabularnewline
+\cline{2-4} 
+\end{tabular} 
+\par\end{center}
+\caption{Conf. matrix $l=0.01$.\label{tab:conf_l_001}}
+%
+\end{minipage}%
+\begin{minipage}[t]{0.33\textwidth}%
+\begin{center}
+\begin{tabular}{cc|c|c}
+ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\hat{y}$} & \tabularnewline
+ &  & 0 & 1\tabularnewline
+\cline{2-4} 
+$y$ & 0 & - & -\tabularnewline
+\cline{2-4} 
+ & 1 & - & -\tabularnewline
+\cline{2-4} 
+\end{tabular} 
+\par\end{center}
+\caption{Conf. matrix $l=0.1$.\label{tab:conf_l_01}}
+%
+\end{minipage}%
+\begin{minipage}[t]{0.33\textwidth}%
+\begin{center}
+\begin{tabular}{cc|c|c}
+ & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$\hat{y}$} & \tabularnewline
+ &  & 0 & 1\tabularnewline
+\cline{2-4} 
+$y$ & 0 & - & -\tabularnewline
+\cline{2-4} 
+ & 1 & - & -\tabularnewline
+\cline{2-4} 
+\end{tabular} 
+\par\end{center}
+\caption{Conf. matrix $l=1$.\label{tab:conf_l_1}}
+%
+\end{minipage}
+\end{table}
+
+
+\section{Conclusions}
+\begin{enumerate}
+\item Draw together the most important results and their consequences.
+\item List any reservations or limitations.
+\end{enumerate}
+
+\end{document}
