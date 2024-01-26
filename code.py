@@ -219,9 +219,9 @@ def get_confussion_matrix(X,y,w,tau=0.5):
     pred_soft = predict(X_tilde,w)
     y_hat = (pred_soft>tau)
     TP = np.count_nonzero(y_hat[y==1])
-    FN = y_hat.shape[0] - TP
+    FN = y_hat[y==1].shape[0] - TP
     FP = np.count_nonzero(y_hat[y == 0])
-    TN = y_hat.shape[0] - FP
+    TN = y_hat[y == 0].shape[0] - FP
 
     return np.array(
         [[TN/(TN+FP),FP/(TN+FP)],
@@ -231,7 +231,7 @@ def get_confussion_matrix(X,y,w,tau=0.5):
 mtx = get_confussion_matrix(X_test,y_test,w)
 print(f"Confussion matrix: {mtx}")
 
-##
+
 # Function that replaces initial input features by evaluating Gaussian basis functions
 # on a grid of points
 #
@@ -261,8 +261,8 @@ X_tilde_test = get_x_tilde(evaluate_basis_functions(l, X_test, X_train))
 
 # We train the new classifier on the feature expanded inputs
 
-alpha = 0.0005 # Learning rate for gradient-based optimisation with basis functions.
-n_steps = 60 # Number of steps of gradient-based optimisation with basis functions.
+alpha = 0.008 # Learning rate for gradient-based optimisation with basis functions.
+n_steps = 5_000 # Number of steps of gradient-based optimisation with basis functions.
 
 w, ll_train, ll_test = fit_w(X_tilde_train, y_train, X_tilde_test, y_test, n_steps, alpha)
 
