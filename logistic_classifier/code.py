@@ -214,7 +214,7 @@ def plot_predictive_distribution(X, y, w, map_inputs = lambda x : x):
 # We plot the predictive distribution
 plot_predictive_distribution(X, y, w)
 
-def get_confussion_matrix(X,y,w,tau=0.5):
+def get_confusion_matrix(X,y,w,tau=0.5):
     X_tilde = get_x_tilde(X)
     pred_soft = predict(X_tilde,w)
     y_hat = (pred_soft>tau)
@@ -228,7 +228,7 @@ def get_confussion_matrix(X,y,w,tau=0.5):
          [FN/(TP+FN),TP/(TP+FN)]]
     )
 
-mtx = get_confussion_matrix(X_test,y_test,w)
+mtx = get_confusion_matrix(X_test,y_test,w)
 print(f"Confussion matrix: {mtx}")
 
 
@@ -275,5 +275,5 @@ plot_ll(ll_test)
 
 plot_predictive_distribution(X, y, w, lambda x : evaluate_basis_functions(l, x, X_train))
 
-mtx = get_confussion_matrix(evaluate_basis_functions(l, X_test, X_train),y_test,w)
-print(f"Confussion matrix: {mtx}")
+mtx = get_confusion_matrix(evaluate_basis_functions(l, X_test, X_train),y_test,w)
+print(f"Confusion matrix: {mtx}")
