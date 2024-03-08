@@ -16,7 +16,8 @@ $p(\mathbf{y}|\mathbf{X},\mathbf{w})=\prod_{i=1}^N p(y_n|\mathbf{x}_n,\mathbf{w}
 
 Therefore we obtain the posterior as:
 
-$p(\mathbf{w}|\{\mathbf{X, y}\}) \propto p(\mathbf{w}) \prod_{n=1}^N p(y_n|\mathbf{x}_n,\mathbf{w})=\mathcal{N}(\mathbf{w}|\mathbf{0},\lambda^{-1}\mathbf{I_N})\prod_{i=1}^N \sigma(y_n \mathbf{w}^T \mathbf{x}_n)$
+$p(\mathbf{w}|\{\mathbf{X, y}\}) \pr
+opto p(\mathbf{w}) \prod_{n=1}^N p(y_n|\mathbf{x}_n,\mathbf{w})=\mathcal{N}(\mathbf{w}|\mathbf{0},\lambda^{-1}\mathbf{I_N})\prod_{i=1}^N \sigma(y_n \mathbf{w}^T \mathbf{x}_n)$
 
 $\therefore p(\mathbf{w}|\mathcal{D}) = \frac{1}{Z(\mathcal{D})} \mathcal{N}(\mathbf{w}|\mathbf{0},\lambda^{-1}\mathbf{I_N})\prod_{i=1}^N \sigma(y_n \mathbf{w}^T \mathbf{x}_n)$
 

@@ -5,7 +5,6 @@ from scipy.optimize import fmin_l_bfgs_b
 from prettytable import PrettyTable
 import matplotlib.pyplot as plt
 
-"""
 X = np.loadtxt('X.txt')
 y = np.loadtxt('y.txt')
 
@@ -13,7 +12,6 @@ y = np.loadtxt('y.txt')
 permutation = np.random.permutation(X.shape[ 0 ])
 X = X[ permutation, : ]
 y = y[ permutation ]
-"""
 ##
 # Function that plots the points in 2D together with their labels
 #
@@ -33,8 +31,8 @@ def plot_data_internal(X, y):
     plt.xlim(xx.min(None), xx.max(None))
     plt.ylim(yy.min(None), yy.max(None))
     ax = plt.gca()
-    ax.plot(X[y == 0, 0], X[y == 0, 1], 'ro',  markersize=3, label = 'Class 1')
-    ax.plot(X[y == 1, 0], X[y == 1, 1], 'bo',  markersize=3, label = 'Class 2')
+    ax.plot(X[y == 0, 0], X[y == 0, 1], 'ro', label = 'Class 1')
+    ax.plot(X[y == 1, 0], X[y == 1, 1], 'bo', label = 'Class 2')
     plt.xlabel('X1')
     plt.ylabel('X2')
     plt.title('Plot data')
@@ -59,13 +57,13 @@ def plot_data(X, y):
 # plot_data(X, y)
 
 # We split the data into train and test sets
-"""
+
 n_train = 800
 X_train = X[ 0 : n_train, : ]
 X_test = X[ n_train :, : ]
 y_train = y[ 0 : n_train ]
 y_test = y[ n_train : ]
-"""
+
 # The logistic function
 
 def logistic(x): return 1.0 / (1.0 + np.exp(-x))
@@ -147,12 +145,12 @@ def fit_w(X_tilde_train, y_train, X_tilde_test, y_test, n_steps, alpha):
         #print(f"Grad ll shape:{grad_ll.shape}")
         w = w + alpha * grad_ll # Gradient-based update rule for w.
         ll_train[ i ] = compute_average_ll(X_tilde_train, y_train, w)
-        ll_test[ i ] = compute_average_ll(X_tilde_test, y_test, w)
+        ll_test[ i ]  = compute_average_ll(X_tilde_test, y_test, w)
         table.add_row([i, ll_train[i], ll_test[i]])
-    #print(table)
+    print(table)
     return w, ll_train, ll_test
 
-"""
+
 # We train the classifier
 
 alpha = 0.001 # XXX Learning rate for gradient-based optimisation. To be completed by the student
@@ -162,7 +160,7 @@ X_tilde_train = get_x_tilde(X_train)
 X_tilde_test = get_x_tilde(X_test)
 
 w, ll_train, ll_test = fit_w(X_tilde_train, y_train, X_tilde_test, y_test, n_steps, alpha)
-"""
+
 
 ##
 # Function that plots the average log-likelihood returned by "fit_w"
@@ -185,12 +183,11 @@ def plot_ll(ll):
     plt.title('Plot Average Log-likelihood Curve')
     plt.show()
 
-"""
 # We plot the training and test log likelihoods
 
 plot_ll(ll_train)
 plot_ll(ll_test)
-"""
+
 ##
 # Function that plots the predictive probabilities of the logistic classifier
 #
@@ -212,7 +209,6 @@ def plot_predictive_distribution(X, y, w, map_inputs = lambda x : x):
     Z = Z.reshape(xx.shape)
     cs2 = ax.contour(xx, yy, Z, cmap = 'RdBu', linewidths = 2)
     plt.clabel(cs2, fmt = '%2.1f', colors = 'k', fontsize = 14)
-    plt.imshow(Z,interpolation="bilinear", origin="lower", cmap="RdBu", extent=(np.amin(xx), np.amax(xx), np.amin(yy), np.amax(yy)), zorder=0)
     plt.show()
 
 # We plot the predictive distribution
@@ -232,10 +228,9 @@ def get_confusion_matrix(X,y,w,tau=0.5):
          [FN/(TP+FN),TP/(TP+FN)]]
     )
 
-"""
 mtx = get_confusion_matrix(X_test,y_test,w)
 print(f"Confussion matrix: {mtx}")
-"""
+
 
 
 # Function that replaces initial input features by evaluating Gaussian basis functions
@@ -257,7 +252,7 @@ def evaluate_basis_functions(l, X, Z):
     ones_X = np.ones(X.shape[ 0 ])
     r2 = np.outer(X2, ones_Z) - 2 * np.dot(X, Z.T) + np.outer(ones_X, Z2)
     return np.exp(-0.5 / l**2 * r2)
-"""
+
 # We expand the data
 
 l = 0.01 # Width of the Gaussian basis function.
@@ -283,4 +278,3 @@ plot_predictive_distribution(X, y, w, lambda x : evaluate_basis_functions(l, x, 
 
 mtx = get_confusion_matrix(evaluate_basis_functions(l, X_test, X_train),y_test,w)
 print(f"Confusion matrix: {mtx}")
-"""
